@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root to: 'questions#index'
   resources :users
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
@@ -17,4 +18,13 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:index]
+
+  namespace :admin do
+    get 'login', to: 'sessions#new'
+    post 'login', to: 'sessions#create'
+    resources :users, only: [:index, :destroy]
+    resources :questions, only: [:index, :destroy]
+  end
+
+  mount LetterQpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 end

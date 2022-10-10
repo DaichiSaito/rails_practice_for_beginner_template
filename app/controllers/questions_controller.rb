@@ -1,16 +1,18 @@
 class QuestionsController < ApplicationController
   def index
     @q = Question.ransack(params[:q])
-    @questions = @q.result(distinct: true)
+    @questions = @q.result(distinct: true).order(created_at: :desc).page(params[:page]).per(5)
   end
 
   def solved
-    @questions = Question.where(solved: true)
+    @q = Question.where(solved: true).ransack(params[:q])
+    @questions = @q.result(distinct: true).order(created_at: :desc).page(params[:page]).per(5)
     render :index
   end
 
   def unsolved
-    @questions = Question.where(solved: false)
+    @q = Question.where(solved: false).ransack(params[:q])
+    @questions = @q.result(distinct: false).order(created_at: :desc).page(params[:page]).per(5)
     render :index
   end
 
@@ -25,7 +27,9 @@ class QuestionsController < ApplicationController
   def create
     @question = current_user.questions.build(question_params)
     if @question.save
-      # flash[:success] = '質問を作成しました'
+      User.where.not(id: current_user.id).each do |user|
+        QuestionMailer.with(user: user, question: @question).question_created.deliver_later
+      end
       redirect_to question_path(@question), success: '質問を作成しました'
     else
       flash.now[:dander] = '失敗しました'
