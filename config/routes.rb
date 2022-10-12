@@ -26,5 +26,5 @@ Rails.application.routes.draw do
     resources :questions, only: [:index, :destroy]
   end
 
-  mount LetterQpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 end
