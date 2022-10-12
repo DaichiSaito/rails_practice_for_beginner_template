@@ -1,17 +1,18 @@
 class QuestionsController < ApplicationController
   def index
-    @questions = Question.all
     @q = Question.ransack(params[:q])
-    @questions =@q.result(distinct: true)
+    @questions = @q.result(distinct: true).order(created_at: :desc).page(params[:page]).per(5)
   end
 
   def solved
-    @questions = Question.where(solved: true)
+    @q = Question.where(solved: true).ransack(params[:q])
+    @questions = @q.result(distinct: true).order(created_at: :desc).page(params[:page]).per(5)
     render :index
   end
 
   def unsolved
-    @questions = Question.where(solved: false)
+    @q = Question.where(solved: false).ransack(params[:q])
+    @questions = @q.result(distinct: true).order(created_at: :desc).page(params[:page]).per(5)
     render :index
   end
 
@@ -23,15 +24,20 @@ class QuestionsController < ApplicationController
     @question = Question.new
   end
 
+  # rubocop:disable Metrics/AbcSize
   def create
     @question = current_user.questions.build(question_params)
     if @question.save
+      User.where.not(id: current_user.id).each do |user|
+        QuestionMailer.with(user: user, question: @question).question_created.deliver_later
+      end
       redirect_to question_path(@question), success: '質問を作成しました'
     else
       flash.now[:danger] = '失敗しました'
       render :new
     end
   end
+  # rubocop:enable Metrics/AbcSize
 
   def edit
     @question = current_user.questions.find(params[:id])
@@ -50,7 +56,7 @@ class QuestionsController < ApplicationController
   def destroy
     @question = current_user.questions.find(params[:id])
     @question.destroy!
-    redirect_to question_path
+    redirect_to questions_path, success: '質問を削除しました'
   end
 
   def solve
