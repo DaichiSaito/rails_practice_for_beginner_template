@@ -141,6 +141,10 @@ GEM
     mini_portile2 (2.8.0)
     minitest (5.16.3)
     msgpack (1.6.0)
+    net-protocol (0.1.3)
+      timeout
+    net-smtp (0.3.2)
+      net-protocol
     nio4r (2.5.8)
     nokogiri (1.13.8)
       mini_portile2 (~> 2.8.0)
@@ -266,6 +270,7 @@ GEM
     sqlite3 (1.5.2-x86_64-darwin)
     thor (1.2.1)
     tilt (2.0.11)
+    timeout (0.3.0)
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
@@ -299,6 +304,7 @@ PLATFORMS
   x86_64-darwin-19
 
 DEPENDENCIES
+  actionmailer
   bcrypt (~> 3.1.7)
   bootsnap (>= 1.4.4)
   bootstrap
@@ -310,6 +316,7 @@ DEPENDENCIES
   kaminari
   letter_opener_web (~> 1.0)
   listen (~> 3.3)
+  net-smtp
   puma (~> 5.0)
   rack-mini-profiler (~> 2.0)
   rails (~> 6.1.3, >= 6.1.3.1)
@@ -329,7 +336,7 @@ DEPENDENCIES
   webpacker (~> 5.0)
 
 RUBY VERSION
-   ruby 2.7.2p137
+   ruby 3.1.0p0
 
 BUNDLED WITH
-   2.2.16
+   2.3.3
