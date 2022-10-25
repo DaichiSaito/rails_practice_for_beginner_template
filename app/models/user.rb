@@ -1,5 +1,4 @@
 class User < ApplicationRecord
-
   has_secure_password
 
   has_many :questions, dependent: :destroy
@@ -13,5 +12,4 @@ class User < ApplicationRecord
   def mine?(object)
     object.user_id == id
   end
-
 end

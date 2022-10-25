@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :answer do
-    body {"ggr"}
-    association :question
-    association :user
+    body { 'ggr' }
+    question
+    user
   end
 end

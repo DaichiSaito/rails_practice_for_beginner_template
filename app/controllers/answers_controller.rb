@@ -10,7 +10,7 @@ class AnswersController < ApplicationController
       User.related_to_question(@answer.question).distinct.each do |user|
         next if user.id == current_user.id || user.mine?(@answer.question)
 
-        AnswerMailer.with(user: user, question: @answer.question).answer_created.deliver_later
+        AnswerMailer.with(user:, question: @answer.question).answer_created.deliver_later
       end
       redirect_to question_path(params[:question_id]), success: '回答しました'
     else

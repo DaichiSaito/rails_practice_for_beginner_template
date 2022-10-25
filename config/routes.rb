@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-  
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-
 
   root to: 'questions#index'
   resources :users
@@ -18,7 +16,7 @@ Rails.application.routes.draw do
     member do
       post :solve
     end
-    resources :answers, only: [:create, :destroy]
+    resources :answers, only: %i[create destroy]
   end
 
   resources :users, only: [:index]
@@ -26,14 +24,14 @@ Rails.application.routes.draw do
   namespace :admin do
     get 'login', to: 'sessions#new'
     post 'login', to: 'sessions#create'
-    resources :users, only: [:index, :destroy]
-    resources :questions, only: [:index, :destroy]
+    resources :users, only: %i[index destroy]
+    resources :questions, only: %i[index destroy]
   end
 
   # api routes
   namespace :api do
-    resources :questions#, only: [:index, :show, :create]
+    resources :questions # , only: [:index, :show, :create]
   end
 
-  #mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
+  # mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 end

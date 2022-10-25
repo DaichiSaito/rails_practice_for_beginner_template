@@ -1,4 +1,4 @@
-require "active_support/core_ext/integer/time"
+require 'active_support/core_ext/integer/time'
 
 # The test environment is used exclusively to run your application's
 # test suite. You never need to work with it otherwise. Remember that
@@ -61,4 +61,4 @@ Rails.application.configure do
 
   config.active_job.queue_adapter = :inline
   config.action_mailer.default_url_options = { host: 'localhost:3000' }
-  end
+end

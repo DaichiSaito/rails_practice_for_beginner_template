@@ -29,7 +29,7 @@ class QuestionsController < ApplicationController
     @question = current_user.questions.build(question_params)
     if @question.save
       User.where.not(id: current_user.id).each do |user|
-        QuestionMailer.with(user: user, question: @question).question_created.deliver_later
+        QuestionMailer.with(user:, question: @question).question_created.deliver_later
       end
       redirect_to question_path(@question), success: '質問を作成しました'
     else

@@ -35,7 +35,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 
 gem 'net-smtp'
 
-gem "actionmailer"
+gem 'actionmailer'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -57,6 +57,9 @@ group :development do
   gem 'rubocop'
   gem 'rubocop-rails'
   gem 'spring'
+
+  gem 'rubocop', require: false
+  gem 'rubocop-rails', require: false
 end
 
 group :test do
