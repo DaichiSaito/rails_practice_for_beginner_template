@@ -1,0 +1,27 @@
+<h1>Users#new</h1>
+<p>Find me in app/views/users/new.html.erb</p>
+<div class = "container">
+  <%= form_with model: @user do |f| %>
+    <div class = "form-group">
+      <%= f.label :name, "名前" %>
+      <%= f.text_field :name, class: 'form-control' %>
+    </div>
+
+    <div>
+      <%= f.label :email, "メールアドレス" %>
+      <%= f.email_field :email %>
+    </div>
+
+    <div>
+      <%= f.label :password, "パスワード" %>
+      <%= f.password_field :password %>
+    </div>
+
+    <div>
+      <%= f.label :password_confirmation, "パスワード確認" %>
+      <%= f.password_field :password_confirmation %>
+    </div>
+
+    <%= f.submit "登録する", class: 'btn btn-primary' %>
+  <% end %>
+</div>
