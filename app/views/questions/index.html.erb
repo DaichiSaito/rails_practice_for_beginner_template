@@ -5,6 +5,15 @@
     <%= link_to '解決済み', solved_questions_path %> 
   </div>
 
+  <%= search_form_for @q, url: request.path, class: 'form-inline mb-5' do |f| %>
+    <div class="input-group w-100">
+      <%= f.search_field :title_or_body_or_answers_body_cont, class: 'form-control' %>
+      <div class="input-group-append">
+        <%= f.submit class: 'btn btn-primary' %>
+      </div>
+    </div>
+  <% end %>
+
 <ul>
   <% @questions.each do |question| %>
     <li>
