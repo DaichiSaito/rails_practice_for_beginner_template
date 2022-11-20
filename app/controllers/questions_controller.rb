@@ -5,6 +5,16 @@ class QuestionsController < ApplicationController
     @questions = @q.result(distinct: true)
   end
 
+  def solved
+    @questions = Question.where(solved_check: true)
+    render :index
+  end
+
+  def unsolved
+    @questions = Question.where(solved_check: false)
+    render :index
+  end
+
   def show
     @question = Question.find(params[:id])
   end
@@ -43,6 +53,12 @@ class QuestionsController < ApplicationController
     @question = current_user.questions.find(params[:id])
     @question.destroy!
     redirect_to questions_path
+  end
+
+  def solve
+    @question = current_user.questions.find(params[:id])
+    @question.update!(solved_check: true)
+    redirect_to question_path(@question), success: '解決済みにしました。'
   end
 
   private
