@@ -18,4 +18,9 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:index]
+
+  namespace :admin do
+    resources :users, only: [:index, :destroy]
+    resources :questions, only: [:index, :destroy]
+  end
 end
