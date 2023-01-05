@@ -1,24 +1,26 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## 要件
 
-Things you may want to cover:
+ログインログアウト機能がある
+ユーザーはニックネームとアバター画像を登録できる
+ユーザーは質問を投稿できる
+ユーザーは自分の質問を編集・削除できる
+ユーザーは質問に対して回答ができる
+ユーザーは質問を解決済み状態に変更できる
+ユーザーは質問を検索できる
+質問があった際に全員に対して質問があった旨をメールで通知する（ただし自分は除く）
+質問に対して回答があった場合は質問者および当該質問に回答したユーザーに対してメールで通知する。（ただし自分は除く）
+質問はページングできる
+管理画面がある
+管理画面へは権限を付与されたユーザーしか入れない
+管理画面では全てのリソースを削除できる
+テーブル設計をして GitHub で PR をあげてください。 フォーマットはテキストで良いです。 e.g.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+erDiagram
+users {
+bigint id PK
+string name "ユーザー名"
+timestamp created_at
+timestamp deleted_at
+}
