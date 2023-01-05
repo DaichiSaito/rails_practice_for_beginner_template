@@ -60,5 +60,30 @@ mail_jobs{
 }
 
 
-
 ```
+
+### エンドポイント・コントローラ設計
+
+| やりたいこと                             | HTTP メソッド | エンドポイント         | コントローラ#アクション |
+| ---------------------------------------- | ------------- | ---------------------- | ----------------------- | ------------- |
+| ユーザー登録画面を表示する               | GET           | /users/new             | users#new               |
+| ユーザー登録をする                       | POST          | /users/create          | users#create            |
+| ログイン画面を表示する                   | GET           | /login                 | sessions#new            |
+| ログインする                             | POST          | /login                 | sessions#create         |
+| ログアウトする                           | Delete        | /logout                | sessions#destroy        |
+| 質問一覧を表示する（全て）               | GET           | /questions             | questions#index         |
+| 質問一覧を表示する（未解決）             | GET           |                        |                         |
+| 質問一覧を表示する（解決済み）           | GET           |                        |                         |
+| 質問投稿ページを表示する                 | GET           | /questions/new         | questions#new           |
+| 質問投稿をする                           | POST          | /questions/create      | questions#new           |
+| 質問詳細を表示する                       | GET           | /questions/[id]        | questions#show          |
+| 質問編集ページを表示する                 | GET           | /questions/[id]/edit   | questions#edit          |
+| 質問を削除する                           | DELETE        | /questions/[id]/delete | questions#destroy       |
+| 回答する                                 | POST          | /answers/create        | answers#create          |
+| ユーザー一覧を表示する                   | GET           | /users                 | users#index             |
+| 管理画面用のログインページを表示する     | GET           | /login/admin           | sessions#new            |
+| 管理画面用のログインをする               | POST          | /login/admin           | sessions#create         |
+| （管理画面）質問一覧ページを表示する     | GET           | /questions/admin       | questions#index         |
+| （管理画面）質問を削除する               | DELETE        | /questions/admin/[id]  | questions#destroy       |
+| （管理画面）ユーザー一覧ページを表示する | GET           | /users/admin           | users#index             |
+| （管理画面）ユーザーを削除する           | DELETE        | /users/[id]            |                         | users#destroy |
