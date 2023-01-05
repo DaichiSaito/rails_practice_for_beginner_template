@@ -65,7 +65,7 @@ mail_jobs{
 ### エンドポイント・コントローラ設計
 
 | やりたいこと                             | HTTP メソッド | エンドポイント         | コントローラ#アクション |
-| ---------------------------------------- | ------------- | ---------------------- | ----------------------- | ------------- |
+| ---------------------------------------- | ------------- | ---------------------- | ----------------------- |
 | ユーザー登録画面を表示する               | GET           | /users/new             | users#new               |
 | ユーザー登録をする                       | POST          | /users/create          | users#create            |
 | ログイン画面を表示する                   | GET           | /login                 | sessions#new            |
@@ -86,4 +86,4 @@ mail_jobs{
 | （管理画面）質問一覧ページを表示する     | GET           | /questions/admin       | questions#index         |
 | （管理画面）質問を削除する               | DELETE        | /questions/admin/[id]  | questions#destroy       |
 | （管理画面）ユーザー一覧ページを表示する | GET           | /users/admin           | users#index             |
-| （管理画面）ユーザーを削除する           | DELETE        | /users/[id]            |                         | users#destroy |
+| （管理画面）ユーザーを削除する           | DELETE        | /users/[id]            | users#destroy           |
