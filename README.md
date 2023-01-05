@@ -25,6 +25,7 @@ questions ||--|{ mail_jobs: "1:1"
 users {
   integer id PK
   string name "ニックネーム"
+  string email "メールアドレス"
   timestamp created_at "作成時刻"
   timestamp updated_at "更新時刻"
   timestamp deleted_at "削除時刻"
