@@ -17,6 +17,7 @@
 管理画面では全てのリソースを削除できる
 テーブル設計をして GitHub で PR をあげてください。 フォーマットはテキストで良いです。 e.g.
 
+```mermaid
 erDiagram
 users {
 bigint id PK
@@ -24,3 +25,5 @@ string name "ユーザー名"
 timestamp created_at
 timestamp deleted_at
 }
+
+```
