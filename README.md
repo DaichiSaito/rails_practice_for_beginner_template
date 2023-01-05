@@ -35,8 +35,8 @@ users {
 questions{
   number id PK
   string title "タイトル"
-  string content "内容"
-  boolean stats "ステータス"
+  text content "内容"
+  boolean solved_status "ステータス"
   number created_user_id
   timestamp created_at "作成時刻"
   timestamp updated_at "更新時刻"
@@ -45,7 +45,7 @@ questions{
 
 answers{
   number id PK
-  string content
+  text content
   number related_question_id
   timestamp created_at "作成時刻"
   timestamp updated_at "更新時刻"
@@ -56,7 +56,7 @@ mail_jobs{
   number id PK
   number related_question_id
   timestamp sended_at "送信時刻"
-  boolean status "送信ステータス"
+  boolean sended_status "送信ステータス"
 }
 
 
