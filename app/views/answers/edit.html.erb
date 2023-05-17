@@ -1,0 +1,7 @@
+    <%= form_with  model: [@question, @answer], url: question_answer_path, method: :patch do |f| %>
+      <li>
+        <%= f.label :body %>
+        <%= f.text_area :body %>
+        <%= f.submit '回答を更新' %>
+      </li>
+    <% end %>

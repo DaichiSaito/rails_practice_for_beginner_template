@@ -7,7 +7,14 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
+import '@babel/plugin-proposal-private-property-in-object'
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+import Rails from 'rails-ujs'
+Rails.start()
+
+//= require jquery
+//= require jquery_ujs
